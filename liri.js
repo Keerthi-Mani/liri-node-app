@@ -55,20 +55,19 @@ function concertThis(search) {
 
             // console.log(response);
             console.log("----------------ARTIST SEARCH LOG-------------------------");
-            for (var i = 0; i < response.data.length; i++) {
-                console.log("Name of the venue: " + response.data[i].venue.name);
-                console.log("Venue Location: " + response.data[i].venue.city);
-                var dt = response.data[i].datetime;
-                var dateTime = dt.split("T");
-                console.log("Date of the Event: " + moment(dateTime[0], "YYYY-MM-DD").format("MM-DD-YYYY") + "," + dateTime[1]);
-                //adds text to log.txt
-                fs.appendFileSync("log.txt", "\r\n" + "------------------------Artist Search Log -------------------------" + "\r\n", "utf8");
-                fs.appendFileSync("log.txt", "\r\n" + "Name of the venue: " + response.data[i].venue.name + "\r\n", "utf8");
-                fs.appendFileSync("log.txt", "\r\n" + "Venue Location: " + response.data[i].venue.city + "\r\n", "utf8");
-                fs.appendFileSync("log.txt", "\r\n" + "Date of the Event: " + moment(dateTime[0], "YYYY-MM-DD").format("MM-DD-YYYY") + "," + dateTime[1] + "\r\n", "utf8");
-                console.log("-----------------------------------------");
 
-            }
+            console.log("Name of the venue: " + response.data[0].venue.name);
+            console.log("Venue Location: " + response.data[0].venue.city);
+            var dt = response.data[0].datetime;
+            var dateTime = dt.split("T");
+            console.log("Date of the Event: " + moment(dateTime[0], "YYYY-MM-DD").format("MM-DD-YYYY") + "," + dateTime[1]);
+            //adds text to log.txt
+            fs.appendFileSync("log.txt", "\r\n" + "------------------------Artist Search Log -------------------------" + "\r\n", "utf8");
+            fs.appendFileSync("log.txt", "\r\n" + "Name of the venue: " + response.data[0].venue.name + "\r\n", "utf8");
+            fs.appendFileSync("log.txt", "\r\n" + "Venue Location: " + response.data[0].venue.city + "\r\n", "utf8");
+            fs.appendFileSync("log.txt", "\r\n" + "Date of the Event: " + moment(dateTime[0], "YYYY-MM-DD").format("MM-DD-YYYY") + "," + dateTime[1] + "\r\n", "utf8");
+            console.log("-----------------------------------------");
+
         }).catch(function (error) {
             console.log(error);
         });
@@ -84,7 +83,7 @@ function spotifyThisSong(search) {
         if (err) {
             return console.log(err);
         }
-
+        console.log("----------------SPOTIFY SEARCH LOG-------------------------");
         //console.log(data.tracks.items[0]);
         console.log("\n---------------------\nSong Name :" + data.tracks.items[0].name);
         console.log("Artist(s) Name :" + data.tracks.items[0].artists[0].name);
@@ -142,27 +141,30 @@ function movieThis(search) {
             fs.appendFileSync("log.txt", "\r\n" + "Language of the movie: " + response.data.Language + "\r\n", "utf8");
             fs.appendFileSync("log.txt", "\r\n" + "Plot of the movie: " + response.data.Plot + "\r\n", "utf8");
             fs.appendFileSync("log.txt", "\r\n" + "Actors in the movie: " + response.data.Actors + "\r\n", "utf8");
+            console.log("-----------------------------------------");
 
         }).catch(function (error) {
             console.log(error);
         });
 }
+console.log("----------------Do-What-It-Says-------------------------");
 
 //This will do what it says 
 function doWhatItSays() {
-
-    fs.readFile("random.txt", "utf8", function (error, search) {
-
-        // first will check for the error If the code experiences any errors it will log the error to the console.
-        if (error) {
-            return console.log(error);
+    fs.readFile("random.txt", "utf8", function (err, data) {
+        if (err) {
+            return console.log(err);
         }
-        console.log(search);
+        //console.log();
 
-        fs.appendFileSync("log.txt", "\r\n" + "Do-What-It-Says" + "\r\n", "utf8");
-        fs.appendFileSync("log.txt", "\r\n" + "Do What It Says: " + search + "\r\n", "utf8");
+        fs.appendFileSync("log.txt", "\n" + data, function (err) {
+            if (err) {
+                return console.log(err);
+            } else {
+                console.log("log.txt was updated");
+            }
+        });
 
+        spotifyThisSong(data);
     });
-    spotifyThisSong(search);
-
 }

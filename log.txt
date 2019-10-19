@@ -1,0 +1,75 @@
+
+------------------------Artist Search Log -------------------------
+
+Name of the venue: PETIT BAIN
+
+Venue Location: Paris
+
+Date of the Event: 10-22-2019,20:00:00
+
+Movie Search Log
+
+Title of the movie: Joker
+
+Year the movie came out: 2019
+
+IMDB Rating of the movie: 9.1
+
+Rotten Tomatoes Rating of the movie: 77%
+
+Country where the movie was produced: USA, Canada
+
+Language of the movie: English
+
+Plot of the movie: A gritty character study of Arthur Fleck, a man disregarded by society.
+
+Actors in the movie: Joaquin Phoenix, Robert De Niro, Zazie Beetz, Frances Conroy
+
+Song Search Log
+
+Song Name :Stay
+
+Artist(s) Name :Post Malone
+
+Album Name :beerbongs & bentleys
+
+Preview URL :null
+
+I Want it That Way
+Song Search Log
+
+Song Name :I Want It That Way
+
+Artist(s) Name :Backstreet Boys
+
+Album Name :The Hits--Chapter One
+
+Preview URL :https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=635d870e7d214d2abc7cf0668ce0e447
+
+Toy Story
+Movie Search Log
+
+Title of the movie: Toy Story
+
+Year the movie came out: 1995
+
+IMDB Rating of the movie: 8.3
+
+Rotten Tomatoes Rating of the movie: 100%
+
+Country where the movie was produced: USA
+
+Language of the movie: English
+
+Plot of the movie: A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.
+
+Actors in the movie: Tom Hanks, Tim Allen, Don Rickles, Jim Varney
+
+Nelly
+------------------------Artist Search Log -------------------------
+
+Name of the venue: Kansas City Live! Block
+
+Venue Location: Kansas City
+
+Date of the Event: 10-25-2019,19:00:00
