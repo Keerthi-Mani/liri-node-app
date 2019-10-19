@@ -27,15 +27,15 @@ var search = process.argv.splice(3).join(" ");
 
 switch (command) {
     case "concert-this":
-        concertThis();
+        concertThis(search);
         break;
 
     case "spotify-this-song":
-        spotifyThisSong();
+        spotifyThisSong(search);
         break;
 
     case "movie-this":
-        movieThis();
+        movieThis(search);
         break;
 
     case "do-what-it-says":
@@ -45,8 +45,7 @@ switch (command) {
 
 //This will search the Bands in Town Artist Events API
 function concertThis(search) {
-    var artist = search;
-    var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+    var queryUrl = "https://rest.bandsintown.com/artists/" + search + "/events?app_id=codingbootcamp";
 
     // This line is just to help us debug against the actual URL.
     //console.log(queryUrl);
@@ -59,13 +58,14 @@ function concertThis(search) {
             for (var i = 0; i < response.data.length; i++) {
                 console.log("Name of the venue: " + response.data[i].venue.name);
                 console.log("Venue Location: " + response.data[i].venue.city);
-                console.log("Date of the Event: " + moment(response.data[i].datetime, "YYYY-MM-DDTHH:mm:ss").format("MM-DD-YYYY", "HH:mm:ss"));
-
+                var dt = response.data[i].datetime;
+                var dateTime = dt.split("T");
+                console.log("Date of the Event: " + moment(dateTime[0], "YYYY-MM-DD").format("MM-DD-YYYY") + "," + dateTime[1]);
                 //adds text to log.txt
                 fs.appendFileSync("log.txt", "\r\n" + "------------------------Artist Search Log -------------------------" + "\r\n", "utf8");
                 fs.appendFileSync("log.txt", "\r\n" + "Name of the venue: " + response.data[i].venue.name + "\r\n", "utf8");
                 fs.appendFileSync("log.txt", "\r\n" + "Venue Location: " + response.data[i].venue.city + "\r\n", "utf8");
-                fs.appendFileSync("log.txt", "\r\n" + "Date of the Event: " + moment(response.data[i].datetime, "YYYY-MM-DDTHH:mm:ss").format("MM-DD-YYYY", "HH:mm:ss") + "\r\n", "utf8");
+                fs.appendFileSync("log.txt", "\r\n" + "Date of the Event: " + moment(dateTime[0], "YYYY-MM-DD").format("MM-DD-YYYY") + "," + dateTime[1] + "\r\n", "utf8");
                 console.log("-----------------------------------------");
 
             }
@@ -74,23 +74,54 @@ function concertThis(search) {
         });
 }
 
+//This will search for the song in spotify api
+function spotifyThisSong(search) {
+    var song = search;
+    if (song === undefined || null) {
+        song = "The Sign Ace of Base"
+    }
+    spotify.search({ type: "track", query: song }, function (err, data) {
+        if (err) {
+            return console.log(err);
+        }
+
+        //console.log(data.tracks.items[0]);
+        console.log("\n---------------------\nSong Name :" + data.tracks.items[0].name);
+        console.log("Artist(s) Name :" + data.tracks.items[0].artists[0].name);
+        console.log("Album Name :" + data.tracks.items[0].album.name);
+        console.log("Preview URL :" + data.tracks.items[0].preview_url + "\n-----------------\n");
+
+        //adds text to log.txt
+        fs.appendFileSync("log.txt", "\r\n" + "Song Search Log" + "\r\n", "utf8");
+        fs.appendFileSync("log.txt", "\r\n" + "Song Name :" + data.tracks.items[0].name + "\r\n", "utf8");
+        fs.appendFileSync("log.txt", "\r\n" + "Artist(s) Name :" + data.tracks.items[0].artists[0].name + "\r\n", "utf8");
+        fs.appendFileSync("log.txt", "\r\n" + "Album Name :" + data.tracks.items[0].album.name + "\r\n", "utf8");
+        fs.appendFileSync("log.txt", "\r\n" + "Preview URL :" + data.tracks.items[0].preview_url + "\r\n", "utf8");
+
+    });
+}
+
 //This will search the movies in OMDB API
 function movieThis(search) {
-    var movieName = search;
-    // Then run a request with axios to the OMDB API with the movie specified
-    var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
 
-    if (!movieName) {
-        movieName = "Mr.Nobody";
+    if (search === undefined || null) {
+        search = "Mr.Nobody";
+        //console.log("--------Watch Mr.Nobody---------------");
+        fs.appendFileSync("log.txt", "---------Watch Mr.Nobody--------------\n");
+        //console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
+        fs.appendFileSync("log.txt", "If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/" + "\n");
+        //console.log("It's on Netflix!");
+        fs.appendFileSync("log.txt", "It's on Netflix!\n");
     }
+    // Then run a request with axios to the OMDB API with the movie specified
     // This line is just to help us debug against the actual URL.
-    //console.log(queryUrl);
+    var queryUrl = "http://www.omdbapi.com/?t=" + search + "&y=&plot=short&apikey=trilogy";
+    console.log(queryUrl);
 
     console.log("------------MOVIE SEARCH LOG-----------------------------");
     // Then create a request with axios to the queryUrl
     axios.get(queryUrl).then(
         function (response) {
-
             //console.log(response.data)
             console.log("Title of the movie: " + response.data.Title);
             console.log("Year the movie came out: " + response.data.Year);
@@ -112,38 +143,26 @@ function movieThis(search) {
             fs.appendFileSync("log.txt", "\r\n" + "Plot of the movie: " + response.data.Plot + "\r\n", "utf8");
             fs.appendFileSync("log.txt", "\r\n" + "Actors in the movie: " + response.data.Actors + "\r\n", "utf8");
 
-
         }).catch(function (error) {
             console.log(error);
         });
 }
 
-//This will search for the song in spotify api
-function spotifyThisSong() {
-    var song = search;
-    if (!song) {
-        song = "The Sign Ace of Base"
-    }
-    spotify.search({ type: "track", query: song }, function (err, data) {
-        if (err) {
-            return console.log(err);
+//This will do what it says 
+function doWhatItSays() {
+
+    fs.readFile("random.txt", "utf8", function (error, search) {
+
+        // first will check for the error If the code experiences any errors it will log the error to the console.
+        if (error) {
+            return console.log(error);
         }
+        console.log(search);
 
-        //console.log(data.tracks.items[0]);
-        console.log("\n---------------------\nSong Name :" + data.tracks.items[0].name);
-        console.log("Artist(s) Name :" + data.tracks.items[0].artists[0].name);
-        console.log("Album Name :" + data.tracks.items[0].album.name);
-        console.log("Preview URL :" + data.tracks.items[0].preview_url + "\n-----------------\n");
+        fs.appendFileSync("log.txt", "\r\n" + "Do-What-It-Says" + "\r\n", "utf8");
+        fs.appendFileSync("log.txt", "\r\n" + "Do What It Says: " + search + "\r\n", "utf8");
 
-        //adds text to log.txt
-        fs.appendFileSync("log.txt", "\r\n" + "Song Search Log" + "\r\n", "utf8");
-        fs.appendFileSync("log.txt", "\r\n" + "Song Name :" + data.tracks.items[0].name + "\r\n", "utf8");
-        fs.appendFileSync("log.txt", "\r\n" + "Artist(s) Name :" + data.tracks.items[0].artists[0].name + "\r\n", "utf8");
-        fs.appendFileSync("log.txt", "\r\n" + "Album Name :" + data.tracks.items[0].album.name + "\r\n", "utf8");
-        fs.appendFileSync("log.txt", "\r\n" + "Preview URL :" + data.tracks.items[0].preview_url + "\r\n", "utf8");
-
-    }).catch(function (error) {
-        console.log(error);
     });
-}
+    spotifyThisSong(search);
 
+}
