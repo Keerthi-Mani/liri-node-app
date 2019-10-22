@@ -22,6 +22,7 @@ var moment = require("moment");
 // Take two arguments.
 // The first will be the command (i.e. "concert-this", "spotify-this-song", "movie-this", "do-what-it-says")
 var command = process.argv[2];
+
 // The second will be the userinput 
 var search = process.argv.splice(3).join(" ");
 
@@ -54,7 +55,7 @@ function concertThis(search) {
         function (response) {
 
             // console.log(response);
-            console.log("----------------ARTIST SEARCH LOG-------------------------");
+            console.log("----------------ARTIST SEARCH LOG-------------");
 
             console.log("Name of the venue: " + response.data[0].venue.name);
             console.log("Venue Location: " + response.data[0].venue.city);
@@ -66,17 +67,16 @@ function concertThis(search) {
             fs.appendFileSync("log.txt", "\r\n" + "Name of the venue: " + response.data[0].venue.name + "\r\n", "utf8");
             fs.appendFileSync("log.txt", "\r\n" + "Venue Location: " + response.data[0].venue.city + "\r\n", "utf8");
             fs.appendFileSync("log.txt", "\r\n" + "Date of the Event: " + moment(dateTime[0], "YYYY-MM-DD").format("MM-DD-YYYY") + "," + dateTime[1] + "\r\n", "utf8");
-            console.log("-----------------------------------------");
 
         }).catch(function (error) {
             console.log(error);
         });
 }
-
+console.log("-----------------------------------------");
 //This will search for the song in spotify api
 function spotifyThisSong(search) {
     var song = search;
-    if (song === undefined || null) {
+    if (song === undefined || null || song === "") {
         song = "The Sign Ace of Base"
     }
     spotify.search({ type: "track", query: song }, function (err, data) {
@@ -103,7 +103,7 @@ function spotifyThisSong(search) {
 //This will search the movies in OMDB API
 function movieThis(search) {
 
-    if (search === undefined || null) {
+    if (search === undefined || null || search === "") {
         search = "Mr.Nobody";
         //console.log("--------Watch Mr.Nobody---------------");
         fs.appendFileSync("log.txt", "---------Watch Mr.Nobody--------------\n");
@@ -147,7 +147,6 @@ function movieThis(search) {
             console.log(error);
         });
 }
-console.log("----------------Do-What-It-Says-------------------------");
 
 //This will do what it says 
 function doWhatItSays() {
@@ -156,8 +155,9 @@ function doWhatItSays() {
             return console.log(err);
         }
         //console.log();
-
-        fs.appendFileSync("log.txt", "\n" + data, function (err) {
+        console.log("----------------Do-What-It-Says-------------------------");
+        var dataArr = data.split(",");
+        fs.appendFileSync("log.txt", "\n" + dataArr[1], function (err) {
             if (err) {
                 return console.log(err);
             } else {
@@ -165,6 +165,7 @@ function doWhatItSays() {
             }
         });
 
-        spotifyThisSong(data);
+        spotifyThisSong(dataArr[1]);
+
     });
 }

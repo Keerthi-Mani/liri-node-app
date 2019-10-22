@@ -7,6 +7,16 @@ Venue Location: Paris
 
 Date of the Event: 10-22-2019,20:00:00
 
+Song Search Log
+
+Song Name :Bey blade
+
+Artist(s) Name :La band dei piccoli Supereroi
+
+Album Name :Le 100 canzoni per bambini la raccolta completa, Vol. 1 (Canzoncine da cantare)
+
+Preview URL :https://p.scdn.co/mp3-preview/d2d4528726b0dbdcb29982901e96ea0f5a02eaff?cid=635d870e7d214d2abc7cf0668ce0e447
+
 Movie Search Log
 
 Title of the movie: Joker
@@ -25,17 +35,9 @@ Plot of the movie: A gritty character study of Arthur Fleck, a man disregarded b
 
 Actors in the movie: Joaquin Phoenix, Robert De Niro, Zazie Beetz, Frances Conroy
 
-Song Search Log
+"I Want it That Way"
 
-Song Name :Stay
 
-Artist(s) Name :Post Malone
-
-Album Name :beerbongs & bentleys
-
-Preview URL :null
-
-I Want it That Way
 Song Search Log
 
 Song Name :I Want It That Way
@@ -46,30 +48,33 @@ Album Name :The Hits--Chapter One
 
 Preview URL :https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=635d870e7d214d2abc7cf0668ce0e447
 
-Toy Story
+Song Search Log
+
+Song Name :The Sign
+
+Artist(s) Name :Ace of Base
+
+Album Name :The Sign (US Album) [Remastered]
+
+Preview URL :https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=635d870e7d214d2abc7cf0668ce0e447
+---------Watch Mr.Nobody--------------
+If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/
+It's on Netflix!
+
 Movie Search Log
 
-Title of the movie: Toy Story
+Title of the movie: Mr. Nobody
 
-Year the movie came out: 1995
+Year the movie came out: 2009
 
-IMDB Rating of the movie: 8.3
+IMDB Rating of the movie: 7.8
 
-Rotten Tomatoes Rating of the movie: 100%
+Rotten Tomatoes Rating of the movie: 67%
 
-Country where the movie was produced: USA
+Country where the movie was produced: Belgium, Germany, Canada, France, USA, UK
 
-Language of the movie: English
+Language of the movie: English, Mohawk
 
-Plot of the movie: A cowboy doll is profoundly threatened and jealous when a new spaceman figure supplants him as top toy in a boy's room.
+Plot of the movie: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.
 
-Actors in the movie: Tom Hanks, Tim Allen, Don Rickles, Jim Varney
-
-Nelly
-------------------------Artist Search Log -------------------------
-
-Name of the venue: Kansas City Live! Block
-
-Venue Location: Kansas City
-
-Date of the Event: 10-25-2019,19:00:00
+Actors in the movie: Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham
