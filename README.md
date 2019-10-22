@@ -68,6 +68,8 @@ This will show the following information about each event to your terminal/bash 
 
 * Date of the Event
 
+![concert](https://user-images.githubusercontent.com/52920074/67254562-b3eeb180-f44b-11e9-8cae-d5e74feb44d7.gif)
+
 ```
 node liri spotify-this-song 'song name'
 ```
@@ -81,6 +83,8 @@ This will show the following about the song in your terminal/bash window:
 * Album of the Song
 
 * Song Preview Link
+
+![spotify](https://user-images.githubusercontent.com/52920074/67254553-ab967680-f44b-11e9-8b07-cafe56332d10.gif)
 
 If no song is provided then the song "The Sign" will be searched instead
 
@@ -106,6 +110,8 @@ This will output the following information to your terminal/bash window:
 
 * Actors in the Movie
 
+![movie](https://user-images.githubusercontent.com/52920074/67254565-b6510b80-f44b-11e9-8e8f-a12d85c4b89a.gif)
+
 ```
 node liri.js do-what-it-says
 ```
@@ -119,5 +125,8 @@ spotify-this-song,"I Want it That Way"
 ```
 
 This would call the spotify-this-song function and pass in "I Want it That Way" as the song.
+
+![do](https://user-images.githubusercontent.com/52920074/67254568-b8b36580-f44b-11e9-8e4a-847d50fb4ee2.gif)
+
 
 
