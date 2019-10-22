@@ -88,6 +88,8 @@ This will show the following about the song in your terminal/bash window:
 
 If no song is provided then the song "The Sign" will be searched instead
 
+![nospotify](https://user-images.githubusercontent.com/52920074/67255458-2bbedb00-f450-11e9-9810-40b958a90353.gif)
+
 ```
 node liri.js movie-this 'movie name'
 ```
@@ -111,6 +113,10 @@ This will output the following information to your terminal/bash window:
 * Actors in the Movie
 
 ![movie](https://user-images.githubusercontent.com/52920074/67254565-b6510b80-f44b-11e9-8e8f-a12d85c4b89a.gif)
+
+If no movie is provided then the movie "Mr.Nobody" will be searched instead
+
+![nomovie](https://user-images.githubusercontent.com/52920074/67255463-324d5280-f450-11e9-8a90-3b18d925b37e.gif)
 
 ```
 node liri.js do-what-it-says
