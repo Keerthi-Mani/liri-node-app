@@ -134,5 +134,14 @@ This would call the spotify-this-song function and pass in "I Want it That Way" 
 
 ![do](https://user-images.githubusercontent.com/52920074/67254568-b8b36580-f44b-11e9-8e4a-847d50fb4ee2.gif)
 
+## Bonus
+
+In addition to logging the data to your terminal/bash window, output the data to a .txt file called log.txt.
+
+Make sure you append each command you run to the log.txt file.
+
+Do not overwrite your file each time you run a command.
+![log](https://user-images.githubusercontent.com/52920074/67256034-08495f80-f453-11e9-82c2-db755e450ea1.gif)
+
 
 
